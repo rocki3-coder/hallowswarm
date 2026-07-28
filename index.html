@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hallowswarm — DC Silent Studio Games</title>
+<meta name="description" content="Hallowswarm is a Halloween survival roguelite for Android. Outrun the swarm, fuse your charms, survive the night. Coming soon to Google Play.">
+<meta property="og:title" content="Hallowswarm">
+<meta property="og:description" content="A Halloween survival roguelite for Android. Coming soon to Google Play.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,900&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#150F1D;
+    --night-2:#1E1629;
+    --ember:#E8631A;
+    --amber:#F2B23E;
+    --bone:#EDE6D8;
+    --bone-dim:#A99EB3;
+    --moss:#7C8C5A;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--night);
+    color:var(--bone);
+    font-family:"Public Sans",system-ui,-apple-system,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+
+  /* ---- hero: candlelight + drifting swarm ---- */
+  .hero{
+    position:relative;
+    min-height:88vh;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    isolation:isolate;
+  }
+  .glow{
+    position:absolute;
+    inset:0;
+    z-index:-2;
+    background:
+      radial-gradient(46% 44% at 50% 42%, rgba(242,178,62,.20) 0%, rgba(232,99,26,.10) 38%, transparent 72%);
+    animation:flicker 5.5s ease-in-out infinite;
+  }
+  @keyframes flicker{
+    0%,100%{opacity:1;transform:scale(1)}
+    28%{opacity:.86;transform:scale(1.02)}
+    47%{opacity:.97;transform:scale(.995)}
+    71%{opacity:.8;transform:scale(1.03)}
+  }
+  .swarm{position:absolute;inset:0;z-index:-1;pointer-events:none}
+  .swarm span{
+    position:absolute;
+    width:5px;height:5px;
+    border-radius:50%;
+    background:#0B0710;
+    opacity:.55;
+    animation:drift linear infinite;
+  }
+  @keyframes drift{
+    from{transform:translate(0,0) scale(1);opacity:.5}
+    to{transform:translate(var(--dx),var(--dy)) scale(.3);opacity:0}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .glow{animation:none}
+    .swarm{display:none}
+  }
+
+  .studio{
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    font-weight:600;color:var(--amber);margin:0 0 20px;
+  }
+  h1{
+    font-family:"Fraunces",Georgia,serif;
+    font-style:italic;font-weight:900;
+    font-size:clamp(56px,13vw,132px);
+    line-height:.9;letter-spacing:-.03em;
+    margin:0 0 22px;
+    color:var(--bone);
+    text-shadow:0 0 44px rgba(232,99,26,.28);
+  }
+  .tagline{
+    font-size:clamp(19px,2.6vw,25px);
+    max-width:30ch;margin:0 0 32px;color:var(--bone);
+  }
+  .status{
+    display:inline-block;
+    border:1px solid rgba(242,178,62,.4);
+    color:var(--amber);
+    padding:9px 18px;
+    font-size:13px;font-weight:600;
+    letter-spacing:.1em;text-transform:uppercase;
+  }
+
+  /* ---- body sections ---- */
+  section{padding:88px 0;border-top:1px solid rgba(237,230,216,.1)}
+  h2{
+    font-family:"Fraunces",Georgia,serif;
+    font-weight:700;font-size:clamp(28px,4.5vw,40px);
+    line-height:1.1;margin:0 0 20px;letter-spacing:-.015em;
+  }
+  .lede{font-size:19px;max-width:58ch;margin:0 0 16px;color:var(--bone)}
+  p{margin:0 0 16px;max-width:62ch;color:var(--bone-dim)}
+  p strong{color:var(--bone);font-weight:600}
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:28px;margin-top:44px;
+  }
+  .card{
+    background:var(--night-2);
+    border-top:2px solid var(--ember);
+    padding:26px 24px;
+  }
+  .card h3{
+    font-family:"Fraunces",Georgia,serif;
+    font-size:20px;font-weight:700;margin:0 0 10px;color:var(--bone);
+  }
+  .card p{font-size:15.5px;margin:0}
+
+  ul.plain{list-style:none;padding:0;margin:28px 0 0;max-width:62ch}
+  ul.plain li{
+    padding:14px 0;
+    border-bottom:1px solid rgba(237,230,216,.1);
+    color:var(--bone-dim);font-size:16px;
+  }
+  ul.plain li b{color:var(--bone);font-weight:600}
+
+  footer{
+    padding:56px 0 80px;
+    border-top:1px solid rgba(237,230,216,.1);
+    font-size:14.5px;color:var(--bone-dim);
+  }
+  footer a{color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(242,178,62,.35)}
+  footer a:hover,footer a:focus{border-bottom-color:var(--amber)}
+  footer p{margin:0 0 10px}
+  .links{margin-bottom:26px}
+  .links a{margin-right:22px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="swarm" aria-hidden="true" id="swarm"></div>
+  <div class="wrap">
+    <p class="studio">DC Silent Studio Games</p>
+    <h1>Hallowswarm</h1>
+    <p class="tagline">The night got hungry. Keep moving.</p>
+    <p class="status">In development · Android</p>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="wrap">
+      <h2>What it is</h2>
+      <p class="lede">A survival roguelite where you don't aim and you don't stop.</p>
+      <p>You're a trick-or-treater who took a wrong turn into a town where the holiday went wrong. Your charms fire on their own. Your only job is to move, choose well, and last the night.</p>
+      <p>Every run lasts about twenty minutes and ends one of two ways.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Three things that make it ours</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Conjurings</h3>
+          <p>Pair the right charm with the right hex and they fuse into something with its own name and its own rules. Ten to find. The grimoire fills in as you do.</p>
+        </div>
+        <div class="card">
+          <h3>Five haunted grounds</h3>
+          <p>A rotting pumpkin patch, a cornfield maze, a moonlit graveyard, a haunted square, a witch's hollow. Each one bends the rules against you.</p>
+        </div>
+        <div class="card">
+          <h3>Your costume</h3>
+          <p>Skeleton, witch, scarecrow, ghost, werewolf, vampire — built how you like, and your starting charm comes with it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Where it stands</h2>
+      <ul class="plain">
+        <li><b>Now</b> — in active development</li>
+        <li><b>Next</b> — closed testing on Google Play</li>
+        <li><b>Then</b> — public release, free with optional purchases</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="links">
+      <a href="privacy.html">Privacy policy</a>
+      <a href="mailto:REPLACE@EXAMPLE.COM">Contact</a>
+    </p>
+    <p>&copy; 2026 DC Silent Studio Games. All rights reserved.</p>
+    <p>Hallowswarm and the DC Silent Studio Games name are trademarks of DC Silent Studio Games.</p>
+  </div>
+</footer>
+
+<script>
+  // Drifting swarm — small dark shapes pulled toward the light, then gone.
+  (function(){
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var host = document.getElementById('swarm');
+    for (var i = 0; i < 26; i++) {
+      var s = document.createElement('span');
+      var edge = Math.random();
+      var x = Math.random() * 100, y = Math.random() * 100;
+      if (edge < .5) { x = Math.random() < .5 ? -4 : 104; }
+      else { y = Math.random() < .5 ? -4 : 104; }
+      s.style.left = x + '%';
+      s.style.top = y + '%';
+      s.style.setProperty('--dx', ((50 - x) * (Math.random() * 6 + 4)) + 'px');
+      s.style.setProperty('--dy', ((45 - y) * (Math.random() * 6 + 4)) + 'px');
+      s.style.animationDuration = (Math.random() * 9 + 9) + 's';
+      s.style.animationDelay = (-Math.random() * 14) + 's';
+      host.appendChild(s);
+    }
+  })();
+</script>
+
+</body>
+</html>
